@@ -96,6 +96,8 @@
     </fieldType>
     <!-- A specialized field for geospatial search. If indexed, this fieldType must not be multivalued. -->
     <fieldType name="location" class="solr.LatLonType" subFieldSuffix="_coordinate"/>
+    <fieldType name="ignored" stored="false" indexed="false" multiValued="true" class="solr.StrField" />
+
   </types>
   <fields>
     <!-- Valid attributes for fields:
@@ -254,6 +256,9 @@
     <dynamicField name="*_llms" stored="true" type="location" multiValued="true" indexed="true"/>
     <field name="textSpell" stored="false" type="textSpell" multiValued="true" indexed="true"/>
     
+    <!-- For document indexing config by santu -->
+    <dynamicField name="*_attachment" stored="true" type="text" multiValued="true" indexed="true"/>
+    <dynamicField name="ignored_*" type="ignored"/>    
     <!-- required by Solr 5 -->
     <field name="_version_" type="tlong" indexed="true" stored="true" multiValued="false" />
   </fields>
